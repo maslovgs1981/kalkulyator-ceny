@@ -1,0 +1,232 @@
+{
+  "version": "2026-11-13",
+  "currency": "RUB",
+  "ratesConfirmed": true,
+  "rates": {
+    "frame": 5000,
+    "poly": 1000,
+    "profile": 1000,
+    "paint": 500,
+    "install": 1300,
+    "gateFrame": 2500,
+    "gateProfile": 875,
+    "gatePicket": null,
+    "gateInstall": 15000,
+    "automation": 30000
+  },
+  "products": [
+    {
+      "id": "canopy",
+      "label": "Навес",
+      "diagram": "canopy",
+      "fields": [
+        {
+          "id": "length",
+          "label": "Длина",
+          "unit": "м",
+          "default": 6,
+          "autoMin": 1,
+          "autoMax": 12
+        },
+        {
+          "id": "width",
+          "label": "Ширина",
+          "unit": "м",
+          "default": 4,
+          "autoMin": 1,
+          "autoMax": 6.6
+        },
+        {
+          "id": "height",
+          "label": "Высота",
+          "unit": "м",
+          "default": 2.7,
+          "autoMin": 2.4,
+          "autoMax": 3.2
+        }
+      ],
+      "coverings": [
+        {
+          "id": "poly",
+          "label": "Поликарбонат",
+          "rateKey": "poly"
+        },
+        {
+          "id": "profile",
+          "label": "Профлист",
+          "rateKey": "profile"
+        }
+      ],
+      "defaults": {
+        "cover": "poly",
+        "painting": true,
+        "installation": true,
+        "automation": false
+      },
+      "terms": [
+        {
+          "id": "frame",
+          "label": "Металлокаркас",
+          "formula": [
+            "mul",
+            [
+              "ref",
+              "area"
+            ],
+            [
+              "rate",
+              "frame"
+            ]
+          ]
+        },
+        {
+          "id": "cover",
+          "label": "Покрытие",
+          "formula": [
+            "mul",
+            [
+              "ref",
+              "area"
+            ],
+            [
+              "coverRate"
+            ]
+          ]
+        },
+        {
+          "id": "paint",
+          "label": "Покраска",
+          "when": "painting",
+          "formula": [
+            "mul",
+            [
+              "ref",
+              "area"
+            ],
+            [
+              "rate",
+              "paint"
+            ]
+          ]
+        },
+        {
+          "id": "install",
+          "label": "Монтаж",
+          "when": "installation",
+          "formula": [
+            "mul",
+            [
+              "ref",
+              "area"
+            ],
+            [
+              "rate",
+              "install"
+            ]
+          ]
+        }
+      ],
+      "minArea": 18,
+      "maxArea": 80,
+      "coverLabel": "Кровля"
+    },
+    {
+      "id": "gate",
+      "label": "Откатные ворота",
+      "diagram": "gate",
+      "fields": [
+        {
+          "id": "width",
+          "label": "Ширина проёма",
+          "unit": "м",
+          "default": 4,
+          "autoMin": 3,
+          "autoMax": 5
+        },
+        {
+          "id": "height",
+          "label": "Высота полотна",
+          "unit": "м",
+          "default": 2,
+          "autoMin": 1.5,
+          "autoMax": 2.2
+        }
+      ],
+      "coverLabel": "Заполнение",
+      "coverings": [
+        {
+          "id": "profile",
+          "label": "Профлист",
+          "rateKey": "gateProfile"
+        },
+        {
+          "id": "picket",
+          "label": "Штакетник",
+          "rateKey": "gatePicket"
+        }
+      ],
+      "defaults": {
+        "cover": "profile",
+        "painting": false,
+        "installation": true,
+        "automation": false
+      },
+      "terms": [
+        {
+          "id": "frame",
+          "label": "Каркас и фурнитура, окраска",
+          "formula": [
+            "mul",
+            [
+              "ref",
+              "area"
+            ],
+            [
+              "rate",
+              "gateFrame"
+            ]
+          ]
+        },
+        {
+          "id": "cover",
+          "label": "Заполнение",
+          "formula": [
+            "mul",
+            [
+              "ref",
+              "area"
+            ],
+            [
+              "coverRate"
+            ]
+          ]
+        },
+        {
+          "id": "automation",
+          "label": "Автоматика",
+          "when": "automation",
+          "formula": [
+            "rate",
+            "automation"
+          ]
+        },
+        {
+          "id": "install",
+          "label": "Монтаж",
+          "when": "installation",
+          "formula": [
+            "rate",
+            "gateInstall"
+          ]
+        }
+      ]
+    }
+  ],
+  "priceDate": "13.11.2026",
+  "pricingBasis": "market",
+  "contacts": {
+    "telegramNickname": "georgiy_maslov81",
+    "whatsappNumber": "79636196707",
+    "email": ""
+  }
+}
